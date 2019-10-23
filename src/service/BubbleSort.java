@@ -11,7 +11,7 @@ public class BubbleSort extends SortingPrecondition {
 	
 	/**
 	 * Utility method that contains Bubble Sort algorithm.
-	 * @param inputArray The given array contains elements to be sorted.
+	 * @param inputArray The given array contains elements to be sorted
 	 */
 	public static void performBubbleSort(final int[] inputArray) {
 		
