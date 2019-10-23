@@ -6,20 +6,23 @@ class Measurement{
   public int numofIntervals = 0;
   public HashMap<Integer, Long> time_measure, memory_measure;
   public ArrayList<int[]> size_interval;
+  SortingPrecondition sort_class = null;
+  
 
-  public Measurement(int[] data, int numofIntervals){
+  public Measurement(int[] data, int numofIntervals, SortingPrecondition sort_class){
     this.arr = data;
     this.numofIntervals = numofIntervals;
+    this.sort_class = sort_class;
     time_measure = new HashMap<Integer, Long>();
     memory_measure = new HashMap<Integer, Long>();
     size_interval = new ArrayList<int[]>();
 
-    int interval_length = data.length/numofIntervals;
+    int interval_length = arr.length/numofIntervals;
     for(int i = 0; i < numofIntervals; i++){
       if(i == numofIntervals - 1){
-        this.size_interval.add(data);
+        this.size_interval.add(arr);
       }else{
-        this.size_interval.add(Arrays.copyOfRange(data, 0, interval_length*(i+1)));
+        this.size_interval.add(Arrays.copyOfRange(arr, 0, interval_length*(i+1)));
       }
     }
 
@@ -62,16 +65,16 @@ class Measurement{
     return result/data.length;
   }
 
-  private static long singe_time_usge(int[] data){
-    long starttime = System.currentTimeMillis();
-    Arrays.sort(data);
-    long time_take = System.currentTimeMillis() - starttime;
+  private long singe_time_usge(int[] data){
+    long starttime = System.nanoTime();
+    this.sort_class.sort(data);
+    long time_take = System.nanoTime() - starttime;
     return time_take;
   }
 
-  private static long singe_memory_usage(int[] data){
+  private long singe_memory_usage(int[] data){
     final long MEGABITE = 1024L * 1024L;
-    Arrays.sort(data);
+    this.sort_class.sort(data);
     Runtime runtime = Runtime.getRuntime();
     runtime.gc();
     //long memory = (runtime.totalMemory() - runtime.freeMemory())/MEGABITE;
