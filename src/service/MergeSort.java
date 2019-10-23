@@ -18,7 +18,7 @@ public class MergeSort extends SortingPrecondition {
 	}
 
 	/**
-	 * Helper method that utilizes divide and conquer algorithmic paradigm to implement merge sort algorithm.
+	 * Recursive method that utilizes divide and conquer algorithmic paradigm to implement merge sort algorithm.
 	 * @param inputArray Represents the given unsorted array contains elements to be sorted
 	 * @param start Represents the starting index of the element in unsorted array
 	 * @param end Represents the last index of the element in unsorted array
