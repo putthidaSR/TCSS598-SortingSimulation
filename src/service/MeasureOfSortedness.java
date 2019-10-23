@@ -22,36 +22,36 @@ public class MeasureOfSortedness {
 	 * @return List of sorted elements in increasing order
 	 */
 	public static List<Integer> getLongestIncreasingSubsequence(final int[] inputArray) {
-		
+
 		List<Integer> longestSubsequenceList = new ArrayList<Integer>();
-		
+
 		// Temporary list that holds current longest increasing subsequence elements
-        List<Integer> tempList = new ArrayList<Integer>(); 
+		List<Integer> tempList = new ArrayList<Integer>();
 
 		int currentMax = 0;
 		int highestCount = 0;
-		
+
 		for (int i = 0; i < inputArray.length; i++) {
-			
+
 			currentMax = Integer.MIN_VALUE;
-			
+
 			for (int j = i; j < inputArray.length; j++) {
-				
+
 				if (inputArray[j] > currentMax) {
 					tempList.add(inputArray[j]);
 					currentMax = inputArray[j];
 				}
 			}
 
-		    // Compare previous highest subsequence  
-            if(highestCount < tempList.size()) {
-                highestCount = tempList.size(); 
-                longestSubsequenceList = new ArrayList<Integer>(tempList);   
-            }
-            
-            tempList.clear(); 
+			// Compare previous highest subsequence
+			if (highestCount < tempList.size()) {
+				highestCount = tempList.size();
+				longestSubsequenceList = new ArrayList<Integer>(tempList);
+			}
+
+			tempList.clear();
 		}
-		
+
 		return longestSubsequenceList;
 	}
 
